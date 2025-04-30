@@ -1,0 +1,1 @@
+const webBreakpoint = 600;
