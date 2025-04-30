@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/responsive/breakpoint.dart';
 
 class Responsivelayout extends StatelessWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  final mobileScreenLayout;
-  // ignore: prefer_typing_uninitialized_variables
-  final webScreenLayout;
+  final WidgetBuilder mobileScreenLayoutBuilder;
+  final WidgetBuilder webScreenLayoutBuilder;
   const Responsivelayout({
     super.key,
-    required this.mobileScreenLayout,
-    required this.webScreenLayout,
+    required this.mobileScreenLayoutBuilder,
+    required this.webScreenLayoutBuilder,
   });
 
   @override
@@ -17,11 +15,9 @@ class Responsivelayout extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > webBreakpoint) {
-          // Web layout
-          return webScreenLayout;
+          return webScreenLayoutBuilder(context);
         } else {
-          // Mobile layout
-          return mobileScreenLayout;
+          return mobileScreenLayoutBuilder(context);
         }
       },
     );
